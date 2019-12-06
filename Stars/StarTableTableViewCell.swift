@@ -8,9 +8,16 @@
 
 import UIKit
 
-class StarTableTableViewCell: UITableViewCell {
-
+class StarTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var distanceLabel: UILabel!
+    
+    
+    
+    //whenever start is set update the views
+    //we dont have a func of update views. That's why there's a private func below
     var star: Star? {
         didSet {
             updateViews()
@@ -18,9 +25,10 @@ class StarTableTableViewCell: UITableViewCell {
     }
     
     private func updateViews() {
+        //dont need optional chaining when star is safely unwrapped
         guard let star = star else { return }
         nameLabel.text = star.name
-        distance.text = "\(star.distance) light years away"
+        distanceLabel.text = "\(star.distance) light years away"
     }
  
 }
